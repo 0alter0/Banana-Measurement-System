@@ -1,494 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Banana Converter</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            text-align: center;
-        }
-        input, select, button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 50px;
+        text-align: center;
+      }
+      input,
+      select,
+      button {
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Convert Units to Bananas</h1>
     <button onclick="toggleMode()">Toggle Mode</button>
+
+    <!-- Length Mode -->
     <div id="lengthMode">
-        <label for="lengthValue">Enter Value:</label>
-        <input type="number" id="lengthValue" step="any">
-        <br>
-        <label for="lengthUnit">Select Unit:</label>
-        <select id="lengthUnit">
-            <option value="centimeters">Centimeters</option>
-            <option value="inches">Inches</option>
-            <option value="feet">Feet</option>
-            <option value="meters">Meters</option>
-            <option value="kilometers">Kilometers</option>
-            <option value="miles">Miles</option>
-        </select>
-        <br>
-        <button onclick="convertToBananas()">Convert to Bananas</button>
+      <label for="lengthValue">Enter Value:</label>
+      <input type="number" id="lengthValue" step="any" />
+      <br />
+      <label for="lengthUnit">Select Unit:</label>
+      <select id="lengthUnit">
+        <option value="centimeters">Centimeters</option>
+        <option value="inches">Inches</option>
+        <option value="feet">Feet</option>
+        <option value="meters">Meters</option>
+        <option value="kilometers">Kilometers</option>
+        <option value="miles">Miles</option>
+      </select>
+      <br />
+      <button onclick="convertToBananas()">Convert to Bananas</button>
     </div>
-    <div id="soundMode" style="display: none;">
-        <label for="soundValue">Enter Value in Decibels:</label>
-        <input type="number" id="soundValue" step="any">
-        <br>
-        <button onclick="convertToSound()">Convert to Bananas</button>
+
+    <!-- Sound Mode -->
+    <div id="soundMode" style="display: none">
+      <label for="soundValue">Enter Value in Decibels:</label>
+      <input type="number" id="soundValue" step="any" />
+      <br />
+      <button onclick="convertToSound()">Convert to Bananas</button>
     </div>
-    <div id="weightMode" style="display: none;">
-        <label for="weightValue">Enter Value:</label>
-        <input type="number" id="weightValue" step="any">
-        <br>
-        <label for="weightUnit">Select Unit:</label>
-        <select id="weightUnit">
-            <option value="grams">Grams</option>
-            <option value="ounces">Ounces</option>
-            <option value="pounds">Pounds</option>
-            <option value="kilograms">Kilograms</option>
-            <option value="tons">Tons</option>
-        </select>
-        <br>
-        <button onclick="convertToWeight()">Convert to Bananas</button>
+
+    <!-- Weight Mode -->
+    <div id="weightMode" style="display: none">
+      <label for="weightValue">Enter Value:</label>
+      <input type="number" id="weightValue" step="any" />
+      <br />
+      <label for="weightUnit">Select Unit:</label>
+      <select id="weightUnit">
+        <option value="grams">Grams</option>
+        <option value="ounces">Ounces</option>
+        <option value="pounds">Pounds</option>
+        <option value="kilograms">Kilograms</option>
+        <option value="tons">Tons</option>
+      </select>
+      <br />
+      <button onclick="convertToWeight()">Convert to Bananas</button>
     </div>
-    <div id="timeMode" style="display: none;">
-        <label for="timeValue">Enter Value:</label>
-        <input type="number" id="timeValue" step="any">
-        <br>
-        <label for="timeUnit">Select Unit:</label>
-        <select id="timeUnit">
-            <option value="seconds">Seconds</option>
-            <option value="minutes">Minutes</option>
-            <option value="hours">Hours</option>
-            <option value="days">Days</option>
-            <option value="weeks">Weeks</option>
-            <option value="months">Months</option>
-            <option value="years">Years</option>
-        </select>
-        <br>
-        <button onclick="convertToTime()">Convert to Bananas</button>
+
+    <!-- Time Mode -->
+    <div id="timeMode" style="display: none">
+      <label for="timeValue">Enter Value:</label>
+      <input type="number" id="timeValue" step="any" />
+      <br />
+      <label for="timeUnit">Select Unit:</label>
+      <select id="timeUnit">
+        <option value="seconds">Seconds</option>
+        <option value="minutes">Minutes</option>
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+        <option value="weeks">Weeks</option>
+        <option value="months">Months</option>
+        <option value="years">Years</option>
+      </select>
+      <br />
+      <button onclick="convertToTime()">Convert to Bananas</button>
     </div>
-    <div id="temperatureMode" style="display: none;">
-        <label for="temperatureValue">Enter Value:</label>
-        <input type="number" id="temperatureValue" step="any">
-        <br>
-        <label for="temperatureUnit">Select Unit:</label>
-        <select id="temperatureUnit">
-            <option value="celsius">Celsius</option>
-            <option value="fahrenheit">Fahrenheit</option>
-        </select>
-        <br>
-        <button onclick="convertToTemperature()">Convert to Bananas</button>
+
+    <!-- Temperature Mode -->
+    <div id="temperatureMode" style="display: none">
+      <label for="temperatureValue">Enter Value:</label>
+      <input type="number" id="temperatureValue" step="any" />
+      <br />
+      <label for="temperatureUnit">Select Unit:</label>
+      <select id="temperatureUnit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+      </select>
+      <br />
+      <button onclick="convertToTemperature()">Convert to Bananas</button>
     </div>
-    <div id="volumeMode" style="display: none;">
-        <label for="volumeValue">Enter Value:</label>
-        <input type="number" id="volumeValue" step="any">
-        <br>
-        <label for="volumeUnit">Select Unit:</label>
-        <select id="volumeUnit">
-            <option value="cubicCentimeters">Cubic Centimeters</option>
-            <option value="cubicInches">Cubic Inches</option>
-            <option value="cubicFeet">Cubic Feet</option>
-            <option value="cubicMeters">Cubic Meters</option>
-            <option value="cubicKilometers">Cubic Kilometers</option>
-            <option value="cubicMiles">Cubic Miles</option>
-        </select>
-        <br>
-        <button onclick="convertToVolume()">Convert to Bananas</button>
+
+    <!-- Volume Mode -->
+    <div id="volumeMode" style="display: none">
+      <label for="volumeValue">Enter Value:</label>
+      <input type="number" id="volumeValue" step="any" />
+      <br />
+      <label for="volumeUnit">Select Unit:</label>
+      <select id="volumeUnit">
+        <option value="cubicCentimeters">Cubic Centimeters</option>
+        <option value="cubicInches">Cubic Inches</option>
+        <option value="cubicFeet">Cubic Feet</option>
+        <option value="cubicMeters">Cubic Meters</option>
+        <option value="cubicKilometers">Cubic Kilometers</option>
+        <option value="cubicMiles">Cubic Miles</option>
+      </select>
+      <br />
+      <button onclick="convertToVolume()">Convert to Bananas</button>
     </div>
-    <div id="electricityMode" style="display: none;">
-        <label for="electricityValue">Enter Value:</label>
-        <input type="number" id="electricityValue" step="any">
-        <br>
-        <label for="electricityUnit">Select Unit:</label>
-        <select id="electricityUnit">
-            <option value="watts">Watts</option>
-            <option value="kilowatts">Kilowatts</option>
-            <option value="megawatts">Megawatts</option>
-        </select>
-        <br>
-        <button onclick="convertToElectricity()">Convert to Bananas</button>
+
+    <!-- Electricity Mode -->
+    <div id="electricityMode" style="display: none">
+      <label for="electricityValue">Enter Value:</label>
+      <input type="number" id="electricityValue" step="any" />
+      <br />
+      <label for="electricityUnit">Select Unit:</label>
+      <select id="electricityUnit">
+        <option value="watts">Watts</option>
+        <option value="kilowatts">Kilowatts</option>
+        <option value="megawatts">Megawatts</option>
+      </select>
+      <br />
+      <button onclick="convertToElectricity()">Convert to Bananas</button>
     </div>
-    <div id="radiationMode" style="display: none;">
-        <label for="radiationValue">Enter Value:</label>
-        <input type="number" id="radiationValue" step="any">
-        <br>
-        <label for="radiationUnit">Select Unit:</label>
-        <select id="radiationUnit">
-            <option value="microsieverts">Microsieverts</option>
-            <option value="millisieverts">Millisieverts</option>
-            <option value="sieverts">Sieverts</option>
-        </select>
-        <br>
-        <button onclick="convertToRadiation()">Convert to Bananas</button>
+
+    <!-- Radiation Mode -->
+    <div id="radiationMode" style="display: none">
+      <label for="radiationValue">Enter Value:</label>
+      <input type="number" id="radiationValue" step="any" />
+      <br />
+      <label for="radiationUnit">Select Unit:</label>
+      <select id="radiationUnit">
+        <option value="microsieverts">Microsieverts</option>
+        <option value="millisieverts">Millisieverts</option>
+        <option value="sieverts">Sieverts</option>
+      </select>
+      <br />
+      <button onclick="convertToRadiation()">Convert to Bananas</button>
     </div>
-    <div id="lightMode" style="display: none;">
-        <label for="lightValue">Enter Value:</label>
-        <input type="number" id="lightValue" step="any">
-        <br>
-        <label for="lightUnit">Select Unit:</label>
-        <select id="lightUnit">
-            <option value="lux">Lux</option>
-            <option value="footcandles">Footcandles</option>
-        </select>
-        <br>
-        <button onclick="convertToLight()">Convert to Bananas</button>
+
+    <!-- Light Mode -->
+    <div id="lightMode" style="display: none">
+      <label for="lightValue">Enter Value:</label>
+      <input type="number" id="lightValue" step="any" />
+      <br />
+      <label for="lightUnit">Select Unit:</label>
+      <select id="lightUnit">
+        <option value="lux">Lux</option>
+        <option value="footcandles">Footcandles</option>
+      </select>
+      <br />
+      <button onclick="convertToLight()">Convert to Bananas</button>
     </div>
+
+    <!-- Pressure Mode -->
+    <div id="pressureMode" style="display: none">
+      <label for="pressureValue">Enter Value:</label>
+      <input type="number" id="pressureValue" step="any" />
+      <br />
+      <label for="pressureUnit">Select Unit:</label>
+      <select id="pressureUnit">
+        <option value="pascals">Pascals</option>
+        <option value="atmospheres">Atmospheres</option>
+        <option value="bars">Bars</option>
+        <option value="psi">PSI</option>
+      </select>
+      <br />
+      <button onclick="convertToPressure()">Convert to Bananas</button>
+    </div>
+
+    <!-- Speed Mode -->
+    <div id="speedMode" style="display: none">
+      <label for="speedValue">Enter Value:</label>
+      <input type="number" id="speedValue" step="any" />
+      <br />
+      <label for="speedUnit">Select Unit:</label>
+      <select id="speedUnit">
+        <option value="metersPerSecond">Meters per Second</option>
+        <option value="kilometersPerHour">Kilometers per Hour</option>
+        <option value="milesPerHour">Miles per Hour</option>
+        <option value="feetPerSecond">Feet per Second</option>
+      </select>
+      <br />
+      <button onclick="convertToSpeed()">Convert to Bananas</button>
+    </div>
+
+    <!-- Price Mode -->
+    <div id="priceMode" style="display: none">
+      <label for="priceValue">Enter Value in Dollars:</label>
+      <input type="number" id="priceValue" step="any" />
+      <br />
+      <button onclick="convertToPrice()">Convert to Bananas</button>
+    </div>
+
+    <!-- Data Storage Mode -->
+    <div id="dataStorageMode" style="display: none">
+      <label for="dataStorageValue">Enter Value:</label>
+      <input type="number" id="dataStorageValue" step="any" />
+      <br />
+      <label for="dataStorageUnit">Select Unit:</label>
+      <select id="dataStorageUnit">
+        <option value="bytes">Bytes</option>
+        <option value="kilobytes">Kilobytes</option>
+        <option value="megabytes">Megabytes</option>
+        <option value="gigabytes">Gigabytes</option>
+      </select>
+      <br />
+      <button onclick="convertToDataStorage()">Convert to Bananas</button>
+    </div>
+
     <div class="result" id="result"></div>
 
     <script>
-        let mode = 'length';
+      let currentMode = "length"; // Default mode
 
-        function toggleMode() {
-            const lengthMode = document.getElementById('lengthMode');
-            const soundMode = document.getElementById('soundMode');
-            const weightMode = document.getElementById('weightMode');
-            const timeMode = document.getElementById('timeMode');
-            const temperatureMode = document.getElementById('temperatureMode');
-            const volumeMode = document.getElementById('volumeMode');
-            const electricityMode = document.getElementById('electricityMode');
-            const radiationMode = document.getElementById('radiationMode');
-            const lightMode = document.getElementById('lightMode');
+      function toggleMode() {
+        // Hide all modes
+        document
+          .querySelectorAll('div[id$="Mode"]')
+          .forEach((el) => (el.style.display = "none"));
 
-            if (mode === 'length') {
-                mode = 'sound';
-                lengthMode.style.display = 'none';
-                soundMode.style.display = 'block';
-                weightMode.style.display = 'none';
-                timeMode.style.display = 'none';
-                temperatureMode.style.display = 'none';
-                volumeMode.style.display = 'none';
-                electricityMode.style.display = 'none';
-                radiationMode.style.display = 'none';
-                lightMode.style.display = 'none';
-            } else if (mode === 'sound') {
-                mode = 'weight';
-                lengthMode.style.display = 'none';
-                soundMode.style.display = 'none';
-                weightMode.style.display = 'block';
-                timeMode.style.display = 'none';
-                temperatureMode.style.display = 'none';
-                volumeMode.style.display = 'none';
-                electricityMode.style.display = 'none';
-                radiationMode.style.display = 'none';
-                lightMode.style.display = 'none';
-            } else if (mode === 'weight') {
-                mode = 'time';
-                lengthMode.style.display = 'none';
-                soundMode.style.display = 'none';
-                weightMode.style.display = 'none';
-                timeMode.style.display = 'block';
-                temperatureMode.style.display = 'none';
-                volumeMode.style.display = 'none';
-                electricityMode.style.display = 'none';
-                radiationMode.style.display = 'none';
-                lightMode.style.display = 'none';
-            } else if (mode === 'time') {
-                mode = 'temperature';
-                lengthMode.style.display = 'none';
-                soundMode.style.display = 'none';
-                weightMode.style.display = 'none';
-                timeMode.style.display = 'none';
-                temperatureMode.style.display = 'block';
-                volumeMode.style.display = 'none';
-                electricityMode.style.display = 'none';
-                radiationMode.style.display
-                = 'none';
-                        lightMode.style.display = 'none';
-                    } else if (mode === 'temperature') {
-                        mode = 'volume';
-                        lengthMode.style.display = 'none';
-                        soundMode.style.display = 'none';
-                        weightMode.style.display = 'none';
-                        timeMode.style.display = 'none';
-                        temperatureMode.style.display = 'none';
-                        volumeMode.style.display = 'block';
-                        electricityMode.style.display = 'none';
-                        radiationMode.style.display = 'none';
-                        lightMode.style.display = 'none';
-                    } else if (mode === 'volume') {
-                        mode = 'electricity';
-                        lengthMode.style.display = 'none';
-                        soundMode.style.display = 'none';
-                        weightMode.style.display = 'none';
-                        timeMode.style.display = 'none';
-                        temperatureMode.style.display = 'none';
-                        volumeMode.style.display = 'none';
-                        electricityMode.style.display = 'block';
-                        radiationMode.style.display = 'none';
-                        lightMode.style.display = 'none';
-                    } else if (mode === 'electricity') {
-                        mode = 'radiation';
-                        lengthMode.style.display = 'none';
-                        soundMode.style.display = 'none';
-                        weightMode.style.display = 'none';
-                        timeMode.style.display = 'none';
-                        temperatureMode.style.display = 'none';
-                        volumeMode.style.display = 'none';
-                        electricityMode.style.display = 'none';
-                        radiationMode.style.display = 'block';
-                        lightMode.style.display = 'none';
-                    } else if (mode === 'radiation') {
-                        mode = 'light';
-                        lengthMode.style.display = 'none';
-                        soundMode.style.display = 'none';
-                        weightMode.style.display = 'none';
-                        timeMode.style.display = 'none';
-                        temperatureMode.style.display = 'none';
-                        volumeMode.style.display = 'none';
-                        electricityMode.style.display = 'none';
-                        radiationMode.style.display = 'none';
-                        lightMode.style.display = 'block';
-                    } else {
-                        mode = 'length';
-                        lengthMode.style.display = 'block';
-                        soundMode.style.display = 'none';
-                        weightMode.style.display = 'none';
-                        timeMode.style.display = 'none';
-                        temperatureMode.style.display = 'none';
-                        volumeMode.style.display = 'none';
-                        electricityMode.style.display = 'none';
-                        radiationMode.style.display = 'none';
-                        lightMode.style.display = 'none';
-                    }
-                }
+        // Toggle to the next mode
+        switch (currentMode) {
+          case "length":
+            currentMode = "sound";
+            break;
+          case "sound":
+            currentMode = "weight";
+            break;
+          case "weight":
+            currentMode = "time";
+            break;
+          case "time":
+            currentMode = "temperature";
+            break;
+          case "temperature":
+            currentMode = "volume";
+            break;
+          case "volume":
+            currentMode = "electricity";
+            break;
+          case "electricity":
+            currentMode = "radiation";
+            break;
+          case "radiation":
+            currentMode = "light";
+            break;
+          case "light":
+            currentMode = "pressure";
+            break;
+          case "pressure":
+            currentMode = "speed";
+            break;
+          case "speed":
+            currentMode = "price";
+            break;
+          case "price":
+            currentMode = "dataStorage";
+            break;
+          case "dataStorage":
+            currentMode = "length";
+            break;
+        }
 
-                function convertToBananas() {
-                    const value = parseFloat(document.getElementById('lengthValue').value);
-                    const unit = document.getElementById('lengthUnit').value;
-                    const bananaSizeInInches = 8;
-                    let valueInInches;
+        // Show the current mode
+        document.getElementById(`${currentMode}Mode`).style.display = "block";
+      }
 
-                    switch(unit) {
-                        case 'inches':
-                            valueInInches = value;
-                            break;
-                        case 'feet':
-                            valueInInches = value * 12;
-                            break;
-                        case 'miles':
-                            valueInInches = value * 63360;
-                            break;
-                        case 'centimeters':
-                            valueInInches = value / 2.54;
-                            break;
-                        case 'meters':
-                            valueInInches = value * 39.37;
-                            break;
-                        case 'kilometers':
-                            valueInInches = value * 39370.1;
-                            break;
-                        default:
-                            valueInInches = 0;
-                    }
+      function convertToBananas() {
+        const value = parseFloat(document.getElementById("lengthValue").value);
+        const unit = document.getElementById("lengthUnit").value;
+        let conversionRate = 1;
 
-                    const numberOfBananas = valueInInches / bananaSizeInInches;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas.`;
-                }
+        switch (unit) {
+          case "centimeters":
+            conversionRate = 0.01;
+            break;
+          case "inches":
+            conversionRate = 0.0254;
+            break;
+          case "feet":
+            conversionRate = 0.3048;
+            break;
+          case "meters":
+            conversionRate = 1;
+            break;
+          case "kilometers":
+            conversionRate = 1000;
+            break;
+          case "miles":
+            conversionRate = 1609.34;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                function convertToSound() {
-                    const value = parseFloat(document.getElementById('soundValue').value);
-                    const bananaDecibels = 30;
-                    const numberOfBananasSound = value / bananaDecibels;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananasSound.toFixed(2)} bananas in sound.`;
-                }
+      function convertToSound() {
+        const value = parseFloat(document.getElementById("soundValue").value);
+        const bananas = value * 0.1; // Example conversion rate
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                function convertToWeight() {
-                    const value = parseFloat(document.getElementById('weightValue').value);
-                    const unit = document.getElementById('weightUnit').value;
-                    const bananaWeightInGrams = 118;
-                    let valueInGrams;
+      function convertToWeight() {
+        const value = parseFloat(document.getElementById("weightValue").value);
+        const unit = document.getElementById("weightUnit").value;
+        let conversionRate = 1;
 
-                    switch(unit) {
-                        case 'grams':
-                            valueInGrams = value;
-                            break;
-                        case 'kilograms':
-                            valueInGrams = value * 1000;
-                            break;
-                        case 'pounds':
-                            valueInGrams = value * 453.592;
-                            break;
-                        case 'ounces':
-                            valueInGrams = value * 28.3495;
-                            break;
-                        case 'tons':
-                            valueInGrams = value * 1_000_000;
-                            break;
-                        default:
-                            valueInGrams = 0;
-                    }
+        switch (unit) {
+          case "grams":
+            conversionRate = 0.001;
+            break;
+          case "ounces":
+            conversionRate = 0.02835;
+            break;
+          case "pounds":
+            conversionRate = 0.453592;
+            break;
+          case "kilograms":
+            conversionRate = 1;
+            break;
+          case "tons":
+            conversionRate = 1000;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    const numberOfBananas = valueInGrams / bananaWeightInGrams;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in weight.`;
-                }
+      function convertToTime() {
+        const value = parseFloat(document.getElementById("timeValue").value);
+        const unit = document.getElementById("timeUnit").value;
+        let conversionRate = 1;
 
-                function convertToTime() {
-                    const value = parseFloat(document.getElementById('timeValue').value);
-                    const unit = document.getElementById('timeUnit').value;
-                    const bananaExpirationDays = 6;
-                    let valueInDays;
+        switch (unit) {
+          case "seconds":
+            conversionRate = 1;
+            break;
+          case "minutes":
+            conversionRate = 60;
+            break;
+          case "hours":
+            conversionRate = 3600;
+            break;
+          case "days":
+            conversionRate = 86400;
+            break;
+          case "weeks":
+            conversionRate = 604800;
+            break;
+          case "months":
+            conversionRate = 2628000;
+            break;
+          case "years":
+            conversionRate = 31536000;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    switch(unit) {
-                        case 'seconds':
-                            valueInDays = value / (24 * 60 * 60);
-                            break;
-                        case 'minutes':
-                            valueInDays = value / (24 * 60);
-                            break;
-                        case 'hours':
-                            valueInDays = value / 24;
-                            break;
-                        case 'days':
-                            valueInDays = value;
-                            break;
-                        case 'weeks':
-                            valueInDays = value * 7;
-                            break;
-                        case 'months':
-                            valueInDays = value * 30; // Approximate, 30 days per month
-                            break;
-                        case 'years':
-                            valueInDays = value * 365; // Approximate, 365 days per year
-                            break;
-                        default:
-                            valueInDays = 0;
-                    }
+      function convertToTemperature() {
+        const value = parseFloat(
+          document.getElementById("temperatureValue").value
+        );
+        const unit = document.getElementById("temperatureUnit").value;
+        let bananas = value;
 
-                    const numberOfBananas = valueInDays / bananaExpirationDays;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in time.`;
-                }
+        if (unit === "fahrenheit") {
+          bananas = ((value - 32) * 5) / 9; // Convert to Celsius
+        }
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                function convertToTemperature() {
-                    const value = parseFloat(document.getElementById('temperatureValue').value);
-                    const unit = document.getElementById('temperatureUnit').value;
-                    let convertedValue;
+      function convertToVolume() {
+        const value = parseFloat(document.getElementById("volumeValue").value);
+        const unit = document.getElementById("volumeUnit").value;
+        let conversionRate = 1;
 
-                    if (unit === 'celsius') {
-                        convertedValue = value * 9 / 5 + 32; // Celsius to Fahrenheit
-                    } else {
-                        convertedValue = value; // Fahrenheit
-                    }
+        switch (unit) {
+          case "cubicCentimeters":
+            conversionRate = 0.000001;
+            break;
+          case "cubicInches":
+            conversionRate = 0.0000163871;
+            break;
+          case "cubicFeet":
+            conversionRate = 0.0283168;
+            break;
+          case "cubicMeters":
+            conversionRate = 1;
+            break;
+          case "cubicKilometers":
+            conversionRate = 1e15;
+            break;
+          case "cubicMiles":
+            conversionRate = 4.168e9;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    const bananaTemperature = 57; // Average banana temperature in Fahrenheit
+      function convertToElectricity() {
+        const value = parseFloat(
+          document.getElementById("electricityValue").value
+        );
+        const unit = document.getElementById("electricityUnit").value;
+        let conversionRate = 1;
 
-                    const numberOfBananas = convertedValue / bananaTemperature;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in temperature.`;
-                }
+        switch (unit) {
+          case "watts":
+            conversionRate = 1;
+            break;
+          case "kilowatts":
+            conversionRate = 1000;
+            break;
+          case "megawatts":
+            conversionRate = 1e6;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                function convertToVolume() {
-                    const value = parseFloat(document.getElementById('volumeValue').value);
-                    const unit = document.getElementById('volumeUnit').value;
-                    const bananaVolumeInCubicCentimeters = 283.9;
-                    let valueInCubicCentimeters;
+      function convertToRadiation() {
+        const value = parseFloat(
+          document.getElementById("radiationValue").value
+        );
+        const unit = document.getElementById("radiationUnit").value;
+        let conversionRate = 1;
 
-                    switch(unit) {
-                        case 'cubicCentimeters':
-                            valueInCubicCentimeters = value;
-                            break;
-                        case 'cubicInches':
-                            valueInCubicCentimeters = value * 16.3871;
-                            break;
-                        case 'cubicFeet':
-                            valueInCubicCentimeters = value * 28316.8;
-                            break;
-                        case 'cubicMeters':
-                            valueInCubicCentimeters = value * 1_000_000;
-                            break;
-                        case 'cubicKilometers':
-                            valueInCubicCentimeters = value * 1_000_000_000_000;
-                            break;
-                        case 'cubicMiles':
-                            valueInCubicCentimeters = value * 4.168e+15;
-                            break;
-                        default:
-                            valueInCubicCentimeters = 0;
-                    }
+        switch (unit) {
+          case "microsieverts":
+            conversionRate = 1e-6;
+            break;
+          case "millisieverts":
+            conversionRate = 0.001;
+            break;
+          case "sieverts":
+            conversionRate = 1;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    const numberOfBananas = valueInCubicCentimeters / bananaVolumeInCubicCentimeters;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in volume.`;
-                }
+      function convertToLight() {
+        const value = parseFloat(document.getElementById("lightValue").value);
+        const unit = document.getElementById("lightUnit").value;
+        let conversionRate = 1;
 
-                function convertToElectricity() {
-                    const value = parseFloat(document.getElementById('electricityValue').value);
-                    const unit = document.getElementById('electricityUnit').value;
-                    const bananaPowerInWatts = 2.5;
-                    let valueInWatts;
+        switch (unit) {
+          case "lux":
+            conversionRate = 1;
+            break;
+          case "footcandles":
+            conversionRate = 10.764;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    switch(unit) {
-                        case 'watts':
-                            valueInWatts = value;
-                            break;
-                        case 'kilowatts':
-                            valueInWatts = value * 1000;
-                            break;
-                        case 'megawatts':
-                            valueInWatts = value * 1_000_000;
-                            break;
-                        default:
-                            valueInWatts = 0;
-                    }
+      function convertToPressure() {
+        const value = parseFloat(
+          document.getElementById("pressureValue").value
+        );
+        const unit = document.getElementById("pressureUnit").value;
+        let conversionRate = 1;
 
-                    const numberOfBananas = valueInWatts / bananaPowerInWatts;
-                    document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in electricity.`;
-                }
+        switch (unit) {
+          case "pascals":
+            conversionRate = 1;
+            break;
+          case "atmospheres":
+            conversionRate = 101325;
+            break;
+          case "bars":
+            conversionRate = 100000;
+            break;
+          case "psi":
+            conversionRate = 6894.76;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                function convertToRadiation() {
-                    const value = parseFloat(document.getElementById('radiationValue').value);
-                    const unit = document.getElementById('radiationUnit').value;
-                    const bananaRadiationInMicrosieverts = 0.1;
-                    let valueInMicrosieverts;
+      function convertToSpeed() {
+        const value = parseFloat(document.getElementById("speedValue").value);
+        const unit = document.getElementById("speedUnit").value;
+        let conversionRate = 1;
 
-                    switch(unit) {
-                        case 'microsieverts':
-                            valueInMicrosieverts = value;
-                            break;
-                        case 'millisieverts':
-                            valueInMicrosieverts = value * 1000;
-                            break;
-                        case 'sieverts':
-                            valueInMicrosieverts = value * 1_000_000;
-                            break;
-                        default:
-                            valueInMicrosieverts = 0;
-                    }
+        switch (unit) {
+          case "metersPerSecond":
+            conversionRate = 1;
+            break;
+          case "kilometersPerHour":
+            conversionRate = 0.277778;
+            break;
+          case "milesPerHour":
+            conversionRate = 0.44704;
+            break;
+          case "feetPerSecond":
+            conversionRate = 0.3048;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                    const numberOfBananas = valueInMicro
-                    sieverts / bananaRadiationInMicrosieverts;
-                                document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in radiation.`;
-                            }
+      function convertToPrice() {
+        const value = parseFloat(document.getElementById("priceValue").value);
+        const bananas = value; // 1 dollar = 1 banana
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
 
-                            function convertToLight() {
-                                const value = parseFloat(document.getElementById('lightValue').value);
-                                const unit = document.getElementById('lightUnit').value;
-                                const bananaLightInLux = 8650;
-                                let valueInLux;
+      function convertToDataStorage() {
+        const value = parseFloat(
+          document.getElementById("dataStorageValue").value
+        );
+        const unit = document.getElementById("dataStorageUnit").value;
+        let conversionRate = 1;
 
-                                switch(unit) {
-                                    case 'lux':
-                                        valueInLux = value;
-                                        break;
-                                    case 'footcandles':
-                                        valueInLux = value * 10.764;
-                                        break;
-                                    default:
-                                        valueInLux = 0;
-                                }
+        // Cost per byte
+        const costPerGigabyte = 0.014;
+        const bytesPerGigabyte = 1e9; // 1 GB = 1 billion bytes
+        const costPerByte = costPerGigabyte / bytesPerGigabyte; // Cost per byte
 
-                                const numberOfBananas = valueInLux / bananaLightInLux;
-                                document.getElementById('result').textContent = `Equivalent to ${numberOfBananas.toFixed(2)} bananas in light.`;
-                            }
-                        </script>
-                    </body>
-                    </html>
+        switch (unit) {
+          case "bytes":
+            conversionRate = costPerByte;
+            break;
+          case "kilobytes":
+            conversionRate = costPerByte * 1024;
+            break;
+          case "megabytes":
+            conversionRate = costPerByte * 1024 ** 2;
+            break;
+          case "gigabytes":
+            conversionRate = costPerGigabyte;
+            break;
+        }
+        const bananas = value * conversionRate;
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${bananas.toFixed(2)} bananas`;
+      }
+    </script>
+  </body>
+</html>
